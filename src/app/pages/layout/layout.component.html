@@ -1,0 +1,23 @@
+<nz-layout class="layout">
+    <nz-header>
+      <div class="logo">
+        <a target="_blank">
+           <h3 style="color: white; font-style: italic;" routerLink="/layout/movies">Cinema</h3>
+        </a>
+      </div>
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+        <li *ngIf="!someoneSignedId" routerLink="/layout/login" nz-menu-item style="font-style:oblique; margin-left: 70%;">Sign in</li>
+        <li *ngIf="!someoneSignedId" routerLink="/layout/register" nz-menu-item style="font-style:oblique;">Sign up</li>
+        <li *ngIf="someoneSignedId" nz-menu-item nzMatchRouter>
+          <a (click)="clearStorage()" style="font-style:oblique;">Sign out</a>
+       </li>
+      </ul>
+    </nz-header>
+    <nz-layout>
+      <nz-content style="min-height: 100%;">
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
