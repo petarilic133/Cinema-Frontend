@@ -1,0 +1,41 @@
+<nz-table #nzTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th nzCustomFilter>
+            Movie      
+        </th>
+        <th>
+            Cinema
+        </th>
+        <th>
+            Hall
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Date and time
+        </th>
+        <th *ngIf="isCustomer || cinemasManager"></th>
+        <th *ngIf="cinemasManager"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.movieName }}</td>
+        <td>{{ data.cinemaName }}</td>
+        <td>{{ data.hallMark }}</td>
+        <td>{{ data.price }}</td>
+        <td>{{ dateAndTime(data.date, data.time) }}</td>
+        <td *ngIf="isCustomer">
+            <button (click)="reserve(data.id)" nz-button nzType="primary">Reserve</button>
+        </td>
+        <td *ngIf="cinemasManager">
+          <button (click)="update(data.id)" nz-button nzType="primary">Update</button>
+       </td>
+       <td *ngIf="cinemasManager">
+        <button (click)="delete(data.id)" nz-button nzType="primary">Delete</button>
+       </td>
+      </tr>
+    </tbody>
+  </nz-table>

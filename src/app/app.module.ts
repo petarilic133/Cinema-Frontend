@@ -15,6 +15,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CinemasComponent } from './pages/cinemas/cinemas.component';
 import { MoviesComponent } from './pages/movies/movies.component';
+import { ProjectionsComponent } from './pages/projections/projections.component';
+import { HallsComponent } from './pages/halls/halls.component';
+import { CinemaComponent } from './pages/update/cinema/cinema.component';
+import { HallComponent } from './pages/update/hall/hall.component';
+import { UserComponent } from './pages/update/user/user.component';
+import { ProjectionComponent } from './pages/update/projection/projection.component';
+import { ManagersComponent } from './pages/managers/managers.component';
+import { ReservationsComponent } from './pages/reservations/reservations.component';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { PastComponent } from './pages/past/past.component';
 
 registerLocaleData(en);
 
@@ -25,7 +35,17 @@ registerLocaleData(en);
     LoginComponent,
     RegisterComponent,
     CinemasComponent,
-    MoviesComponent
+    MoviesComponent,
+    ProjectionsComponent,
+    HallsComponent,
+    CinemaComponent,
+    HallComponent,
+    UserComponent,
+    ProjectionComponent,
+    ManagersComponent,
+    ReservationsComponent,
+    CustomersComponent,
+    PastComponent
   ],
   imports: [
     BrowserModule,

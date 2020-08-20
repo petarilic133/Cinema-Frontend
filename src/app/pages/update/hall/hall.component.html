@@ -1,0 +1,29 @@
+<div class="wallpaper">
+     <form nz-form [formGroup]="validateForm" class="registrationForm">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mark" nzRequired>Mark</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nz-input id="mark" formControlName="mark" placeholder="Mark"/>
+            <nz-form-explain *ngIf="validateForm.get('mark')?.dirty && validateForm.get('mark')?.errors"
+              ></nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+        
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="capacity" nzRequired>Capacity</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nz-input id="capacity" formControlName="capacity" placeholder="Capacity" />
+            <nz-form-explain *ngIf="validateForm.get('capacity')?.dirty && validateForm.get('capacity')?.errors"
+              ></nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+      
+        <nz-form-item nz-row style="margin-bottom:8px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button (click)="submitForm()" nz-button nzType="primary" [disabled]="!validateForm.valid">Confirm</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>

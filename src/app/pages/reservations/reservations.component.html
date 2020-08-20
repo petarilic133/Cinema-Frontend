@@ -1,0 +1,34 @@
+<nz-table #nzTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th nzCustomFilter>
+            Movie      
+        </th>
+        <th>
+            Cinema
+        </th>
+        <th>
+            Hall
+        </th>
+        <th>
+            Date and time
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.movieName }}</td>
+        <td>{{ data.cinemaName }}</td>
+        <td>{{ data.hallMark }}</td>
+        <td>{{ dateAndTime(data.date, data.time) }}</td>
+        <td>{{ data.price }}</td>
+        <td>
+            <button (click)="cancel(data.id)" nz-button nzType="primary">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

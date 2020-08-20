@@ -1,0 +1,36 @@
+<nz-table #nzTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th nzCustomFilter>
+            First name      
+        </th>
+        <th>
+            Last name
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.lastName }}</td>
+        <td>{{ data.username }}</td>
+        <td>{{ data.email }}</td>
+        <td *ngIf="!isSetNewManager">
+            <button (click)="delete(data.id)" nz-button nzType="primary">Delete</button>
+        </td>
+        <td *ngIf="isSetNewManager">
+          <button (click)="setNewManager(data.id)" nz-button nzType="primary">Choose</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <br />
+  <button (click)="newManager()" nz-button nzType="primary">Add new manager</button>
+

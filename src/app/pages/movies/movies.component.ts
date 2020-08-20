@@ -20,6 +20,6 @@ export class MoviesComponent implements OnInit {
   }
 
   projections(id): void{
-    
+    this.router.navigateByUrl(`layout/projections/${id}/movie`);
   }
 }

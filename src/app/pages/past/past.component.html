@@ -5,22 +5,14 @@
             Name      
         </th>
         <th>
-            Description
-        </th>
-        <th>
             Duration
         </th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of nzTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.description }}</td>
+        <td>{{ data.movieName }}</td>
         <td>{{ data.duration }}</td>
-        <td>
-            <button (click)="projections(data.id)" nz-button nzType="primary">Projections</button>
-          </td>
       </tr>
     </tbody>
   </nz-table>

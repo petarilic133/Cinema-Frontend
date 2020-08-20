@@ -2,14 +2,22 @@
     <nz-header>
       <div class="logo">
         <a target="_blank">
-           <h3 style="color: white; font-style: italic;" routerLink="/layout/movies">Cinema</h3>
+           <h3 style="color: white; font-style: italic;">Cinema</h3>
         </a>
       </div>
       <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-        <li *ngIf="!someoneSignedId" routerLink="/layout/login" nz-menu-item style="font-style:oblique; margin-left: 70%;">Sign in</li>
-        <li *ngIf="!someoneSignedId" routerLink="/layout/register" nz-menu-item style="font-style:oblique;">Sign up</li>
-        <li *ngIf="someoneSignedId" nz-menu-item nzMatchRouter>
-          <a (click)="clearStorage()" style="font-style:oblique;">Sign out</a>
+        <li routerLink="/layout/movies" nz-menu-item style="font-style:oblique;">Movies</li>
+        <li routerLink="/layout/projection" *ngIf="isManager" nz-menu-item style="font-style:oblique;">New projection</li>
+        <li *ngIf="!isAdmin && !isCustomer && !isManager" routerLink="/layout/login" nz-menu-item style="font-style:oblique; margin-left: 60%;">Sign in</li>
+        <li *ngIf="!isAdmin && !isCustomer && !isManager" routerLink="/layout/register" nz-menu-item style="font-style:oblique;">Sign up</li>
+        <li *ngIf="isAdmin || isCustomer || isManager" routerLink="/layout/cinemas" nz-menu-item style="font-style:oblique;">Cinemas</li>
+        <li *ngIf="isAdmin || isCustomer || isManager" (click)="updateProfile()" nz-menu-item style="font-style:oblique;">Profile</li>
+        <li *ngIf="isCustomer" (click)="reservations()" nz-menu-item style="font-style:oblique;">Reservations</li>
+        <li *ngIf="isCustomer" (click)="pastProjections()" nz-menu-item style="font-style:oblique;">History</li>
+        <li *ngIf="isAdmin" routerLink="/layout/managers" nz-menu-item style="font-style:oblique;">Managers</li>
+        <li *ngIf="isAdmin" routerLink="/layout/customers" nz-menu-item style="font-style:oblique;">Customers</li>
+        <li *ngIf="isAdmin || isManager || isCustomer" style="font-style:oblique; margin-left: 35%;" nz-menu-item nzMatchRouter>
+          <a (click)="clearStorage()">Sign out</a>
        </li>
       </ul>
     </nz-header>

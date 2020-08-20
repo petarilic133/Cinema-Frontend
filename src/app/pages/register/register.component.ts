@@ -32,12 +32,16 @@ export class RegisterComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-    this.authService.register(this.validateForm.value).subscribe(data => {
-      const user = data;
-      console.log(data)
-      localStorage.setItem('user', JSON.stringify(user));
-      window.location.reload();
-    })
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user != null){
+      this.authService.registerManager(this.validateForm.value).subscribe(data => {
+        this.router.navigateByUrl('layout/managers');
+      })
+    }else{
+      this.authService.registerCustomer(this.validateForm.value).subscribe(data => {
+        this.router.navigateByUrl('layout/login');
+      })
+    }
   }
 
   updateConfirmValidator(): void {

@@ -1,0 +1,30 @@
+<div style="width: 200px; margin-left: 35%; margin-top: 9%;">
+<input nz-input placeholder="Price" [(ngModel)]="price" />
+<br />
+<br />
+<input nz-input placeholder="yyyy-mm-dd" [(ngModel)]="date" />
+<br />
+<br />
+<input nz-input placeholder="hh:mm:ss" [(ngModel)]="time" />
+<br />
+<br />
+<nz-select
+    nzShowSearchselectedType
+    nzAllowClear
+    nzPlaceHolder="Choose movie"
+    [(ngModel)]="movieId">  
+    <nz-option *ngFor="let item of listOfData1" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+</nz-select>
+<br />
+<br />
+<nz-select
+    nzShowSearchselectedType
+    nzAllowClear
+    nzPlaceHolder="Choose cinema and hall"
+    [(ngModel)]="hallId">  
+    <nz-option *ngFor="let item of listOfData2" [nzValue]="item.id" [nzLabel]="hallMarkAndCinemaName(item.mark, item.cinemaName)"></nz-option>
+ </nz-select>
+</div>
+<br />
+<br />
+<button style="margin-left: 35%;" (click)="confirm()" nz-button nzType="primary">Confirm</button>

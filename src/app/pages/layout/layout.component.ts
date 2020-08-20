@@ -8,21 +8,49 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-  someoneSignedId: boolean;
+  isAdmin: boolean;
+  isCustomer: boolean;
+  isManager: boolean;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.someoneSignedId = false;
-    if(JSON.parse(localStorage.getItem('user')) != undefined){
-      this.someoneSignedId = true;
+    this.setupUserType();
+  }
+
+  private setupUserType(): void{
+    this.isAdmin = false;
+    this.isCustomer = false;
+    this.isManager = false;
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user != null){
+      if(user.userType === 'ADMIN'){
+        this.isAdmin = true;
+      }else if(user.userType === 'CUSTOMER'){
+        this.isCustomer = true;
+      }else{
+        this.isManager = true;
+      }
     }
+  }
+
+  updateProfile(): void{
+    this.router.navigateByUrl(`layout/user`);
+  }
+
+  reservations(): void{
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.router.navigateByUrl(`layout/reservations/${user.id}/customer`);
+  }
+
+  pastProjections(): void{
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.router.navigateByUrl(`layout/history/${user.id}/customer`);
   }
 
   clearStorage(): void{
     localStorage.clear();
     this.router.navigateByUrl('layout/login');
-    window.location.reload();
+    this.setupUserType();
   }
-
 }

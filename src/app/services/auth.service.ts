@@ -17,7 +17,15 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}auth/login`, body);
   }
 
-  public register(body): Observable<any> {
+  public registerCustomer(body): Observable<any> {
     return this.http.post(`${this.baseUrl}auth/customer-registration`, body);
+  }
+
+  public registerManager(body): Observable<any> {
+    return this.http.post(`${this.baseUrl}auth/manager-registration`, body);
+  }
+
+  public deleteUser(id): Observable<any> {
+    return this.http.delete(`${this.baseUrl}users/${id}`);
   }
 }
