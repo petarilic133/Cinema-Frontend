@@ -10,6 +10,9 @@
         <th>
             Duration
         </th>
+        <th>
+          Genre type
+      </th>
         <th></th>
       </tr>
     </thead>
@@ -18,6 +21,7 @@
         <td>{{ data.name }}</td>
         <td>{{ data.description }}</td>
         <td>{{ data.duration }}</td>
+        <td>{{ data.genreType }}</td>
         <td>
             <button (click)="projections(data.id)" nz-button nzType="primary">Projections</button>
           </td>

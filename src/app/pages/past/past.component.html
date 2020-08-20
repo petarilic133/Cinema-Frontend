@@ -7,12 +7,16 @@
         <th>
             Duration
         </th>
+        <th>
+          Genre type
+      </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of nzTable.data">
         <td>{{ data.movieName }}</td>
         <td>{{ data.duration }}</td>
+        <td>{{ data.genreType }}</td>
       </tr>
     </tbody>
   </nz-table>
