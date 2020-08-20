@@ -19,7 +19,7 @@ import { UserComponent } from './pages/update/user/user.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/layout/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/layout/movies' },
   {
     path: 'layout', component: LayoutComponent, children: [
       { path: 'login', component: LoginComponent },
