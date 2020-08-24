@@ -25,7 +25,7 @@ export class CinemaComponent implements OnInit {
       temp = true;
     }
     this.validateForm = this.fb.group({
-      name: [{value: null, disabled: temp}, [Validators.required]],
+      name: [null, [Validators.required]],
       phone: [null, [Validators.required]],
       address: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
@@ -61,7 +61,11 @@ export class CinemaComponent implements OnInit {
     }
 
     if(this.route.snapshot.params.id != undefined){
-      this.cinemaService.updateCinema(this.validateForm.value).subscribe(() => {
+      const body = {
+        ...this.validateForm.value,
+        id: this.route.snapshot.params.id
+      }
+      this.cinemaService.updateCinema(body).subscribe(() => {
         this.router.navigateByUrl('layout/cinemas');
       })
     }else{
