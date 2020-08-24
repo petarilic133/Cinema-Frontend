@@ -29,7 +29,6 @@ export class RegisterComponent implements OnInit {
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
     }
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -42,11 +41,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigateByUrl('layout/login');
       })
     }
-  }
-
-  updateConfirmValidator(): void {
-    /** wait for refresh value */
-    Promise.resolve().then(() => this.validateForm.controls.rePassword.updateValueAndValidity());
   }
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {

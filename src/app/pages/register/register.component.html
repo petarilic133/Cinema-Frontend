@@ -68,7 +68,6 @@
             id="password"
             placeholder="Password"
             formControlName="password"
-            (ngModelChange)="updateConfirmValidator()"
           />
           <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
             ></nz-form-explain
